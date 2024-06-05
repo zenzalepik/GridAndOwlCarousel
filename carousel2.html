@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carousel Slider</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+<style>
+    .owl-carousel .item {
+        margin: 3px;
+    }
+    .owl-carousel .item img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .owl-prev,
+    .owl-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .owl-prev {
+        left: 0;
+    }
+    .owl-next {
+        right: 0;
+    }
+</style>
+</head>
+<body>
+
+<div class="owl-carousel owl-theme" id="owl-carousel"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    const items = [
+        { title: "Title 1", description: "Description 1" },
+        { title: "Title 2", description: "Description 2" },
+        { title: "Title 3", description: "Description 3" },
+        { title: "Title 4", description: "Description 4" },
+        { title: "Title 5", description: "Description 5" },
+        { title: "Title 6", description: "Description 6" },
+        { title: "Title 7", description: "Description 7" },
+        { title: "Title 8", description: "Description 8" },
+        { title: "Title 9", description: "Description 9" },
+        { title: "Title 10", description: "Description 10" },
+        { title: "Title 11", description: "Description 11" },
+        { title: "Title 12", description: "Description 12" }
+    ];
+
+    $(document).ready(function(){
+        const owlCarousel = $("#owl-carousel");
+        items.forEach(function(item) {
+            const html = `
+                <div class="item">
+                    <h3>${item.title}</h3>
+                    <p>${item.description}</p>
+                </div>
+            `;
+            owlCarousel.append(html);
+        });
+
+        owlCarousel.owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            items:4, // Menampilkan 4 item per sesi
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
